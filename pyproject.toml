@@ -10,7 +10,7 @@ requires-python = ">=3.11"
 dependencies = []
 
 [project.scripts]
-lion19-registration = "lion19_registration:main"
+lion19-registration = "registration_app:main"
 
 [build-system]
 requires = ["setuptools>=61"]
