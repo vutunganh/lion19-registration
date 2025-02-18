@@ -1,0 +1,17 @@
+[project]
+name = "lion19-registration"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Tung Anh Vu" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+lion19-registration = "lion19_registration:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
