@@ -1,0 +1,35 @@
+[uwsgi]
+strict = true
+chdir = /home/<user>/registration
+socket = var/registration_app.sock
+chmod-socket = 666
+master-fifo = var/uwsgi.fifo
+buffer-size = 65536
+
+listen = 4096
+
+logto = log/registration_app.log
+log-maxsize = 1000000
+log-date = %%Y-%%m-%%d %%H:%%M:%%S
+logformat-strftime = true
+log-format = %(ftime) %(addr) %(method) "%(uri)" %(proto) %(status) t=%(msecs) rxb=%(cl) txb=%(rsize) pid=%(pid)
+
+master = true
+processes = 2
+vacuum = true
+die-on-term = true
+max-requests = 10000
+
+mount = /=registration_app:app
+plugin = python3
+virtualenv = venv
+manage-script-name = true
+
+env = GNU_CAULDRON_CONFIG=etc/config.toml
+env = GPWEBPAY_CURRENCY=
+env = GPWEBPAY_MERCHANT_CALLBACK_URL=
+env = GPWEBPAY_MERCHANT_ID=
+env = GPWEBPAY_MERCHANT_PRIVATE_KEY=
+env = GPWEBPAY_MERCHANT_PRIVATE_KEY_PASSPHRASE=
+env = GPWEBPAY_PUBLIC_KEY=
+env = GPWEBPAY_URL=https://3dsecure.gpwebpay.com/pgw/order.do

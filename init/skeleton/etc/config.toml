@@ -1,0 +1,19 @@
+admin_password = "very_secret_password"
+
+[Database]
+connection = "postgresql:///<database_name_here>"
+
+[Email]
+enabled = false
+server = "kam.mff.cuni.cz"
+from = "<sender>@kam.mff.cuni.cz"
+cc = []
+
+[Email.content]
+subject_prefix = "<some_prefix>"
+
+[Payment]
+enabled = false
+# Prices are in GBP in the smallest unit. E.g. 4100 is 41 pounds or 4100 pences.
+price = 7500
+receipt_description = "Registration fee" # not used atm because the payment gate library sucks
