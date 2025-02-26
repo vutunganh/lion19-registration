@@ -1,0 +1,48 @@
+footer {
+  margin: 0 1rem;
+}
+
+#registration-form .input-group {
+  margin-top: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#registration-form .input-group:first-child {
+  margin-top: 0rem;
+}
+
+#registration-form .input-group label {
+  font-weight: bold;
+}
+
+.form-message {
+  margin: 0.5rem -0.5rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+.form-message.form-message--success {
+  background-color: #adf4bf;
+}
+
+.form-message.form-message--errors {
+  background-color: #f7c3c0;
+}
+
+.form-message.form-message--warning {
+  background-color: #ffc107;
+}
+
+#registration-fees {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid black;
+}
+
+#registration-fees td {
+  border: 1px solid black;
+  padding: 0.25rem;
+}

@@ -1,0 +1,33 @@
+Dear $full_name,
+
+we have received your payment for the conference fee. Below, you will find a
+receipt. If you need a full invoice, please contact the organizers.
+
+Best wishes,
+  GNU Tools Cauldron organizers
+
+================================================================================
+
+Charles University
+Faculty of Mathematics and Physics
+Ke Karlovu 3
+121 16   Prague 2
+VAT: CZ00216208
+Czech Republic
+
+$full_name
+$affiliation
+$address
+$city
+$country
+$zip_code
+$vat_tax_no
+
+RECEIPT
+
+$full_name
+
+Registration fee - GNU Tools Cauldron 2024 (September 14-16, 2024)     CZK  $price,-    (incl.  VAT TAX 21%)
+
+        Organizing Committee
+           Prague, $date

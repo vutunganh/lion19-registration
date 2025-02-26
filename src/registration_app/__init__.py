@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from lion19-registration!")
+APP_NAME = "registration_app"
