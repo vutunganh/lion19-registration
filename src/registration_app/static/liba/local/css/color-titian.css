@@ -1,0 +1,514 @@
+[data-body-class="titian"] #qLpercentage {
+
+  background: #de4a32;
+
+  color: #ffffff !important;
+
+}
+
+[data-body-class="titian"] a {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] a:hover {
+
+/*  color: #a82f1b;*/
+
+}
+.svg-icons .icon-set svg{
+	width:30px !important;
+	height:auto !important;
+	vertical-align: middle;
+	position: relative;
+	margin-top: -7px;
+}
+ .svg-icons .icon-set svg path, 
+ .svg-icons .icon-set svg polygon, 
+ .svg-icons .icon-set svg rect, 
+ .svg-icons .icon-set svg circle, 
+ .svg-icons .icon-set svg ellipse, 
+ .svg-icons .icon-set svg line,  
+ .svg-icons .icon-set svg polyline, 
+ .svg-icons .icon-set svg text {fill:#666666;}
+ .svg-icons .icon-set:hover svg path, 
+ .svg-icons .icon-set:hover svg polygon, 
+ .svg-icons .icon-set:hover svg rect, 
+ .svg-icons .icon-set:hover svg circle, 
+ .svg-icons .icon-set:hover svg ellipse, 
+ .svg-icons .icon-set:hover svg line,  
+ .svg-icons .icon-set:hover svg polyline, 
+ .svg-icons .icon-set:hover svg text {fill:#ffffff;}
+[data-body-class="titian"] path, 
+[data-body-class="titian"] polygon, 
+[data-body-class="titian"] rect,
+[data-body-class="titian"] circle, 
+[data-body-class="titian"] ellipse, 
+[data-body-class="titian"] line, 
+[data-body-class="titian"] polyline, 
+[data-body-class="titian"] text {fill: #de4a32;}
+[data-body-class="titian"] [class*="icon-"] {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .icon-set {
+
+  color: #666666;
+
+}
+
+[data-body-class="titian"] .icon-set:hover {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .color-border-bottom {
+
+  border-bottom-color: #de4a32;
+
+}
+
+[data-body-class="titian"] [class*="slide-nav"] a:hover {
+
+  color: #ffffff;
+
+  border-color: #de4a32;
+
+  background: #de4a32;
+
+}
+
+[data-body-class="titian"] [class*="slide-nav"] a:hover [class*="icon-"] {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .social-icons a:hover {
+
+  color: #FFF;
+
+  border-color: #FFF;
+
+}
+
+[data-body-class="titian"] .social-icons a:hover [class*="icon-"] {
+
+  color: #FFF;
+
+}
+
+[data-body-class="titian"] .scroll-up [class*="icon-"] {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .scroll-up:hover {
+
+  background: #de4a32;
+
+}
+
+[data-body-class="titian"] .scroll-down span:hover {
+
+  background: #de4a32;
+
+  border-color: #de4a32;
+
+}
+
+[data-body-class="titian"] .scroll-down span:hover [class*="icon-"] {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-brand {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-brand:hover {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-nav li a:hover,
+
+[data-body-class="titian"] .navbar .navbar-nav li a:focus {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-nav li.current-menu-item > a,
+
+[data-body-class="titian"] .navbar .navbar-nav li.active > a {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-nav li.current-menu-item > a:hover,
+
+[data-body-class="titian"] .navbar .navbar-nav li.active > a:hover,
+
+[data-body-class="titian"] .navbar .navbar-nav li.current-menu-item > a:focus,
+
+[data-body-class="titian"] .navbar .navbar-nav li.active > a:focus {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .navbar.nav-transparent .navbar-nav a {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .navbar.nav-transparent .navbar-nav a:hover,
+
+[data-body-class="titian"] .navbar.nav-transparent .navbar-nav a:focus {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-toggle {
+
+  background: #de4a32;
+
+  border-color: #de4a32;
+
+}
+
+[data-body-class="titian"] .navbar .navbar-toggle:hover {
+
+  background: #de4a32;
+
+}
+
+
+[data-body-class="titian"] .about-us h2 a:hover {
+
+  color: #de4a32;text-decoration:underline;
+
+}
+
+[data-body-class="titian"] .slogan {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .slogan h1,
+
+[data-body-class="titian"] .slogan h2,
+
+[data-body-class="titian"] .slogan h3 {
+
+  color: #ffffff;
+
+font-size: 25px;
+
+}
+
+[data-body-class="titian"] .portfolio-section .portfolio-items-list .portfolio-item hgroup h5 a:hover {
+
+ /* color: #de4a32;*/
+
+ text-decoration:underline;
+
+}
+
+[data-body-class="titian"] .portfolio-section .portfolio-filter li a:hover {
+
+  color: #de4a32;
+
+  border-color: #de4a32;
+
+}
+
+[data-body-class="titian"] .portfolio-section .portfolio-filter li a.active {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+  border-color: #de4a32;
+ text-decoration:none;
+}
+[data-body-class="titian"] .fade-col:hover {
+
+  background: #de4a32;
+  box-shadow: inset 0px -10px 0px rgba(0, 0, 0, 0.09);
+
+}
+
+[data-body-class="titian"] .list-mark li:before {
+
+  border-color: #de4a32;
+
+}
+
+[data-body-class="titian"] .list-num li:before {
+
+  border-color: #de4a32;
+
+}
+
+[data-body-class="titian"] [class*='list-empty'] > li:before {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] [class*='list-full'] > li:before {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .alert.alert-colored {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .alert.alert-colored .close {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .alert.alert-border {
+
+  border-color: #de4a32;
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .alert.alert-border .close {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .custom-panel-group .panel-custom .panel-heading .panel-title a:hover {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .custom-panel-group .panel-custom .panel-heading .panel-title a.active {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .custom-panel-group .panel-custom .panel-heading .panel-title a.active:after {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .custom-panel-group .panel-custom .panel-heading .panel-title a.active:hover {
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .progress .progress-bar-custom {
+
+  background: #de4a32;
+
+}
+
+[data-body-class="titian"] .widget .tagcloud a:hover {
+
+  border-color: #de4a32;
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .post .custom-date {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .pagination.pagination-custom li.active a {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .btn-default {
+
+  background: #de4a32;
+
+  border-bottom-color: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .btn-default:hover {
+
+  background: #e75c45;
+
+  border-bottom-color: #e75c45;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .btn-default.btn-inverse {
+
+  background: #ffffff;
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .btn-default.btn-inverse:hover {
+
+  background: #ffffff;
+
+  border-bottom-color: #f2f2f2;
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .btn-white {
+
+  color: #ffffff;
+
+  border-color: #ffffff;
+
+}
+
+[data-body-class="titian"] .btn-white:hover {
+
+  background: #ffffff;
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .breadcrumbs .breadcrumb .active a {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .nav-tabs.nav-justified li a:hover,
+
+[data-body-class="titian"] .nav-tabs.nav-justified li a:focus {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .nav-tabs.nav-justified li.active a {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .nav-tabs.nav-justified li.active a:hover,
+
+[data-body-class="titian"] .nav-tabs.nav-justified li.active a:focus {
+
+  background: #de4a32;
+
+  color: #ffffff;
+
+}
+
+[data-body-class="titian"] .easyPieChart span {
+
+  color: #de4a32;
+
+}
+
+[data-body-class="titian"] .team-section a:hover {
+
+  color: #de4a32;
+
+}
+[data-body-class="titian"] .search-form button:hover,
+[data-body-class="titian"]  .widget .search-form button:focus,
+[data-body-class="titian"] .widget .search-form button:active, 
+[data-body-class="titian"] .widget .search-form button.active{background: #de4a32;}
+[data-body-class="titian"] .figure-hover-overlay .item-overlay, [data-body-class="titian"] .slider-figure-hover-overlay .item-overlay{background:rgba(222, 74, 50, 0.93)}
+[data-body-class="titian"] .headingUline{background-color: #de4a32;}
+
+[data-body-class="titian"] .btn-color.btn-empty {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #DE4A32;
+}
+[data-body-class="titian"] .btn-color.btn-empty:hover {
+    background: none repeat scroll 0 0 #DE4A32;
+	color:#FFF;
+}
+
+[data-body-class="titian"] .arrow {
+margin: 0px auto;
+width: 0;
+border-bottom: 15px solid #DE4A32;
+border-left: 20px solid transparent;
+border-right: 20px solid transparent;
+display: block;
+}
+[data-body-class="titian"] .arrow-social {
+margin: 0px auto;
+width: 0;
+border-bottom: 22px solid #DE4A32;
+border-left: 30px solid transparent;
+border-right: 30px solid transparent;
+display: block;
+}
+[data-body-class="titian"] [class*="form"] label .req {
+ color: #DE4A32;
+ font-weight: 300;
+ width: 9px;
+ display: inline-block;
+}
+[data-body-class="titian"] .figure-hover-overlay figcaption,[data-body-class="titian"] .slider-figure-hover-overlay  figcaption{
+background: none repeat scroll 0 0 #DE4A32;
+color: #FFF;
+left: 0;
+padding: 10px;
+position: absolute;
+}
+

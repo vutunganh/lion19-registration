@@ -16,24 +16,7 @@ def home():
     return {"request": request}
 
 
-@app.route("/registration")
-@jinja2_view("registration.html.jinja")
-def show_registration_form():
-    form = RegistrationForm()
-    return {"form": form}
-
-
-@app.post("/registration")
-@jinja2_view("registration.html.jinja")
-def register_participant():
-    form = RegistrationForm(request.forms)
-    if not form.validate():
-        return {"form": form}
-    registration_result = participant.register_participant(form)
-    return {"form": form, "registration_result": registration_result}
-
-
-@app.route(r"/static/<filepath:path>")
+@app.route(r"/<filepath:path>")
 def serve_static_file(filepath: str):
     with resources.path(APP_NAME, "static") as p:
         return static_file(filepath, p.as_posix())
