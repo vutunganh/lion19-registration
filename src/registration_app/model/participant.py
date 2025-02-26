@@ -4,7 +4,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from enum import Enum, auto
 
-from gnu_cauldron_reg.forms.registration import RegistrationForm
+from registration_app.forms.registration import RegistrationForm
 
 
 class RegistrationFeeType(Enum):

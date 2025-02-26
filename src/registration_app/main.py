@@ -2,11 +2,10 @@
 
 import logging
 
-import gnu_cauldron_reg.api
-import gnu_cauldron_reg.routes # noqa: F401
-from gnu_cauldron_reg.app import app
-from gnu_cauldron_reg.config import load_app_args, load_app_config
-from gnu_cauldron_reg.db.connection import perform_migrations, register_enums
+import registration_app.routes # noqa: F401
+from registration_app.app import app
+from registration_app.config import load_app_args, load_app_config
+from registration_app.db.connection import perform_migrations, register_enums
 
 from bottle import run
 

@@ -6,8 +6,8 @@ import tomllib
 from dataclasses import dataclass
 from pathlib import Path
 
-from gnu_cauldron_reg.app import app
-from gnu_cauldron_reg.cli import parse_cli_args
+from registration_app.app import app
+from registration_app.cli import parse_cli_args
 
 
 logger = logging.getLogger(__name__)
