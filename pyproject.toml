@@ -7,7 +7,15 @@ authors = [
     { name = "Tung Anh Vu" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "bottle>=0.13.2",
+    "gpwebpay>=0.1.4",
+    "httpx>=0.28.1",
+    "jinja2>=3.1.5",
+    "psycopg>=3.2.3",
+    "wtforms>=3.2.1",
+    "yoyo-migrations>=9.0.0",
+]
 
 [project.scripts]
 lion19-registration = "registration_app:main"
@@ -15,3 +23,8 @@ lion19-registration = "registration_app:main"
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.9.4",
+]
