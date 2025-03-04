@@ -25,7 +25,7 @@ def filter_empty_string_to_none():
 
 
 class RegistrationForm(Form):
-    """Registration form for STOC participants.
+    """Registration form for conference participants.
 
     Validator constraints have to be manually synchronized with:
     - `registration_app/db/migrations` to match the database schema

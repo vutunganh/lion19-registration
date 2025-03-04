@@ -61,23 +61,23 @@ def register_participant(
     res = ParticipantRegistrationResult()
     participant_info = ParticipantInfo.from_form(participant_input)
 
-    if participant_info.is_student:
-        res.fee_type = RegistrationFeeType.STUDENT
-    elif participant_info.acm_membership_number is not None:
-        res.fee_type = RegistrationFeeType.DISCOUNTED
-        if not can_apply_acm_membership_discount(
-            participant_info.acm_membership_number,
-            participant_info.email,
-        ):
-            res.warn_invalid_membership = True
-    elif participant_info.ieee_membership_number is not None:
-        res.fee_type = RegistrationFeeType.DISCOUNTED
-        if not is_membership_unused(
-            MembershipType.IEEE,
-            participant_info.ieee_membership_number,
-            participant_info.email,
-        ):
-            res.warn_invalid_membership = True
+    # if participant_info.is_student:
+    #     res.fee_type = RegistrationFeeType.STUDENT
+    # elif participant_info.acm_membership_number is not None:
+    #     res.fee_type = RegistrationFeeType.DISCOUNTED
+    #     if not can_apply_acm_membership_discount(
+    #         participant_info.acm_membership_number,
+    #         participant_info.email,
+    #     ):
+    #         res.warn_invalid_membership = True
+    # elif participant_info.ieee_membership_number is not None:
+    #     res.fee_type = RegistrationFeeType.DISCOUNTED
+    #     if not is_membership_unused(
+    #         MembershipType.IEEE,
+    #         participant_info.ieee_membership_number,
+    #         participant_info.email,
+    #     ):
+    #         res.warn_invalid_membership = True
 
     try:
         add_participant(participant_info, res.fee_type)
