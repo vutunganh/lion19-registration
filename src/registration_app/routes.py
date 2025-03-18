@@ -13,7 +13,7 @@ from bottle import jinja2_view, request, static_file
 @app.route("/")  # pyright: ignore
 @jinja2_view("home.html.jinja")
 def home():
-    return {"request": request}
+    pass
 
 
 @app.route("/registration")  # pyright: ignore
@@ -37,3 +37,15 @@ def register_participant():
 def serve_static_file(filepath: str):
     with resources.path(APP_NAME, "static") as p:
         return static_file(filepath, p.as_posix())
+
+
+@app.route(r"/images/<filepath:path>")  # pyright: ignore
+def serve_images(filepath: str):
+    with resources.path(APP_NAME, "static") as p:
+        return static_file(filepath, (p / "images").as_posix())
+
+
+@app.route(r"/liba/<filepath:path>")  # pyright: ignore
+def serve_liba(filepath: str):
+    with resources.path(APP_NAME, "static") as p:
+        return static_file(filepath, (p / "liba").as_posix())
