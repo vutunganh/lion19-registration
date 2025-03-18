@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-if [ "$HOSTNAME" != nikam -o "$USER" != null ] ; then
-    echo "Run me as stoc2025@nikam, please"
+if [ "$HOSTNAME" != nikam -o "$USER" != lion19 ] ; then
+    echo "Run me as lion19@nikam, please"
     exit 1
 fi
 
