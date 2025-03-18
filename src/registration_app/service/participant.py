@@ -4,7 +4,11 @@ import logging
 from dataclasses import dataclass, field
 
 from registration_app.app import app
-from registration_app.db.participant import MembershipType, add_participant, is_membership_unused
+from registration_app.db.participant import (
+    MembershipType,
+    add_participant,
+    is_membership_unused,
+)
 from registration_app.forms.registration import RegistrationForm
 from registration_app.model.participant import ParticipantInfo, RegistrationFeeType
 
@@ -60,7 +64,6 @@ def register_participant(
     """
     res = ParticipantRegistrationResult()
     participant_info = ParticipantInfo.from_form(participant_input)
-
 
     try:
         add_participant(participant_info, res.fee_type)

@@ -16,6 +16,7 @@ class PaymentGateException(RuntimeError):
 
 class PaymentUnsuccessfulException(RuntimeError):
     """Raised if the payment was not successful for some reason."""
+
     def __init__(self, err_msg: str) -> None:
         super().__init__(err_msg)
         self.err_msg = err_msg
@@ -87,7 +88,9 @@ def handle_payment_callback(callback_url: str) -> int:
     gw = gpwebpay.GpwebpayClient()
     key_bytes = base64.b64decode(GPWebpayConfig.GPWEBPAY_PUBLIC_KEY)
     payment_verification_result = gw.get_payment_result(callback_url, key_bytes)
-    if payment_verification_result == {"RESULT": "The payment communication was compromised."}:
+    if payment_verification_result == {
+        "RESULT": "The payment communication was compromised."
+    }:
         logger.error(f"Payment compromised. URL: '{callback_url}'")
         raise PaymentUnsuccessfulException("Payment compromised.")
     if payment_verification_result["PRCODE"] != "0":

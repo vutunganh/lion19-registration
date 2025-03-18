@@ -4,7 +4,11 @@ import logging
 from enum import Enum, auto
 from typing import List
 
-from registration_app.model.participant import Participant, ParticipantInfo, RegistrationFeeType
+from registration_app.model.participant import (
+    Participant,
+    ParticipantInfo,
+    RegistrationFeeType,
+)
 
 import psycopg
 from bottle import request

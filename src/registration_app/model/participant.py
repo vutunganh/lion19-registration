@@ -45,9 +45,9 @@ class ParticipantInfo:
         return cls(
             postal_mail_opt_out=participant.privacy_policy_postal_mail_opt_out.data,
             email_opt_in=participant.privacy_policy_email_opt_in.data == "yes",
-            full_name=participant.full_name.data,
+            full_name=participant.full_name.data,  # pyright: ignore
             affiliation=participant.affiliation.data,
-            email=participant.email.data,
+            email=participant.email.data,  # pyright: ignore
             acm_membership_number=participant.acm_membership_number.data,
             ieee_membership_number=participant.ieee_membership_number.data,
             is_student=participant.is_student.data,

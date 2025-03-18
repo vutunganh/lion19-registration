@@ -18,6 +18,7 @@ def _strip_or_none(value: str | None) -> str | None:
 
     return value if value else None
 
+
 def filter_empty_string_to_none():
     return [
         _strip_or_none,
@@ -95,9 +96,7 @@ class RegistrationForm(Form):
         ],
         filters=filter_empty_string_to_none(),
     )
-    is_student = BooleanField(
-        "Are you a student?"
-    )
+    is_student = BooleanField("Are you a student?")
 
     remarks = TextAreaField(
         "Remarks (including dietary restrictions, accessibility requirements, etc.)",
