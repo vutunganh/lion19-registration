@@ -3,8 +3,9 @@
 import importlib.resources as resources
 import logging
 
-from gnu_cauldron_reg.app import app
-from gnu_cauldron_reg.model.participant import RegistrationFeeType
+from registration_app import APP_NAME
+from registration_app.app import app
+from registration_app.model.participant import RegistrationFeeType
 
 import psycopg
 from bottle import request, response
@@ -22,7 +23,7 @@ def perform_migrations(connection_str: str):
         connection_str.replace("postgresql://", "postgresql+psycopg://"),
     )
     logger.info("[DB migrations] Connected to DB")
-    with resources.path("gnu_cauldron_reg", "db") as f:
+    with resources.path(APP_NAME, "db") as f:
         migrations_path = (f / "migrations").as_posix()
         logger.info(f"[DB migrations] Reading migrations from {migrations_path}")
         migrations = read_migrations(migrations_path)

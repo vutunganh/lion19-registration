@@ -2,9 +2,9 @@
 
 import json
 
-from gnu_cauldron_reg.app import app
-from gnu_cauldron_reg.service.acm import can_apply_acm_membership_discount
-from gnu_cauldron_reg.service.participant import can_apply_ieee_membership
+from registration_app.app import app
+from registration_app.service.acm import can_apply_acm_membership_discount
+from registration_app.service.participant import can_apply_ieee_membership
 
 from bottle import request
 

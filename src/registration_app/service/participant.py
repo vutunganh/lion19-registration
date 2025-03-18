@@ -3,16 +3,16 @@
 import logging
 from dataclasses import dataclass, field
 
-from gnu_cauldron_reg.app import app
-from gnu_cauldron_reg.db.participant import MembershipType, add_participant, is_membership_unused
-from gnu_cauldron_reg.forms.registration import RegistrationForm
-from gnu_cauldron_reg.model.participant import ParticipantInfo, RegistrationFeeType
-from gnu_cauldron_reg.service.acm import can_apply_acm_membership_discount
+from registration_app.app import app
+from registration_app.db.participant import MembershipType, add_participant, is_membership_unused
+from registration_app.forms.registration import RegistrationForm
+from registration_app.model.participant import ParticipantInfo, RegistrationFeeType
+from registration_app.service.acm import can_apply_acm_membership_discount
 
 import psycopg
 import psycopg.errors
 
-from gnu_cauldron_reg.service.emailer import EmailTemplate, Emailer
+from registration_app.service.emailer import EmailTemplate, Emailer
 
 logger = logging.getLogger(__name__)
 

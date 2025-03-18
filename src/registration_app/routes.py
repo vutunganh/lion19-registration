@@ -2,9 +2,10 @@
 
 import importlib.resources as resources
 
-from gnu_cauldron_reg.app import app
-from gnu_cauldron_reg.forms.registration import RegistrationForm
-from gnu_cauldron_reg.service import participant
+from registration_app import APP_NAME
+from registration_app.app import app
+from registration_app.forms.registration import RegistrationForm
+from registration_app.service import participant
 
 from bottle import jinja2_view, request, static_file
 
@@ -34,5 +35,5 @@ def register_participant():
 
 @app.route(r"/static/<filepath:path>")
 def serve_static_file(filepath: str):
-    with resources.path("gnu_cauldron_reg", "static") as p:
+    with resources.path(APP_NAME, "static") as p:
         return static_file(filepath, p.as_posix())

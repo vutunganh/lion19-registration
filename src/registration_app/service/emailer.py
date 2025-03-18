@@ -8,7 +8,8 @@ from email.message import EmailMessage
 from enum import Enum
 from smtplib import SMTP_SSL
 
-from gnu_cauldron_reg.app import app
+from registration_app import APP_NAME
+from registration_app.app import app
 
 logger = logging.getLogger(__name__)
 
@@ -77,7 +78,7 @@ class Emailer:
             template_type: EmailTemplate,
     ) -> EmailMessage:
         msg = EmailMessage()
-        with resources.path("gnu_cauldron_reg", "email_templates") as p:
+        with resources.path(APP_NAME, "email_templates") as p:
             with (p / template_map[template_type]).open() as f:
                 template = string.Template(f.read())
         msg_content = template.template
