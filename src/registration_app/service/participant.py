@@ -79,11 +79,11 @@ def register_participant(
 
     # TODO(Tung): Initialize once.
     emailer = Emailer(
-        app.config["stoc_registration.Email.server"],
-        app.config["stoc_registration.Email.from"],
-        app.config["stoc_registration.Email.content.subject_prefix"],
-        app.config["stoc_registration.Email.cc"],
-        app.config["stoc_registration.Email.enabled"],
+        app.config["registration_app.Email.server"],
+        app.config["registration_app.Email.from"],
+        app.config["registration_app.Email.content.subject_prefix"],
+        app.config["registration_app.Email.cc"],
+        app.config["registration_app.Email.enabled"],
     )
 
     emailer.send_email_from_template(
@@ -102,11 +102,11 @@ def compute_price_in_czk(fee_type: RegistrationFeeType) -> int:
     """Computes the fee in CZK from `ParticipantRegistrationFeeType`."""
     match fee_type:
         case RegistrationFeeType.FULL:
-            res = app.config["stoc_registration.Payment.standard_price"]
+            res = app.config["registration_app.Payment.standard_price"]
         case RegistrationFeeType.DISCOUNTED:
-            res = app.config["stoc_registration.Payment.discounted_price"]
+            res = app.config["registration_app.Payment.discounted_price"]
         case RegistrationFeeType.STUDENT:
-            res = app.config["stoc_registration.Payment.student_price"]
+            res = app.config["registration_app.Payment.student_price"]
     return int(res)
 
 

@@ -25,7 +25,7 @@ class AppArgs:
 def load_app_config(config_path: str) -> None:
     with Path(config_path).open("rb") as f:
         app_config = tomllib.load(f)
-    app_config = {"stoc_registration": app_config}
+    app_config = {"registration_app": app_config}
     app.config.load_dict(app_config)
     print(app.config)
 

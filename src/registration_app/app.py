@@ -1,4 +1,4 @@
-"""STOC registration app."""
+"""Conference registration app."""
 
 import importlib.resources as resources
 

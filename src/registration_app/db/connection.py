@@ -48,7 +48,7 @@ def register_enums(connection_str: str):
 def open_db():
     try:
         request.db = psycopg.connect(
-            app.config["stoc_registration.Database.connection"],
+            app.config["registration_app.Database.connection"],
             autocommit=True,
         )
     except psycopg.Error:

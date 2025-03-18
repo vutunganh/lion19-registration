@@ -14,8 +14,8 @@ logging.basicConfig(datefmt="%Y-%m-%d %H:%M:%S")
 app_args = load_app_args()
 load_app_config(app_args.config_file_path)
 
-perform_migrations(app.config["stoc_registration.Database.connection"])
-register_enums(app.config["stoc_registration.Database.connection"])
+perform_migrations(app.config["registration_app.Database.connection"])
+register_enums(app.config["registration_app.Database.connection"])
 
 if app_args.auto_run:
     run(app, host="127.0.0.1", port=8080)
