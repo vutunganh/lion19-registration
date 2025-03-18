@@ -2,7 +2,6 @@
 
 import logging
 
-import registration_app.api
 import registration_app.routes # noqa: F401
 from registration_app.app import app
 from registration_app.config import load_app_args, load_app_config
