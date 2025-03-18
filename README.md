@@ -20,6 +20,8 @@ Make sure to use version 3 and not version 2!
 Eventually, I would like to use [peewee](https://docs.peewee-orm.com/en/latest/) as a micro-ORM.
 We perform database migrations using [yoyo-migrations](https://pypi.org/project/yoyo-migrations/).
 
+We use [pre-commit](https://pre-commit.com/) hooks to make sure that our code is nice!
+
 ## Configuration files
 
 This app uses two configuration files.
