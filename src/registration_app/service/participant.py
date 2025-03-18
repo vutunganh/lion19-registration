@@ -41,7 +41,7 @@ def register_participant(
     participant_input: RegistrationForm,
 ) -> ParticipantRegistrationResult:
     """Registers a participant based on form input.
-    
+
     Steps performed:
     1. Determine the payment amount.
         - If they are a student, just trust them and give them a discount.

@@ -31,7 +31,7 @@ def load_app_config(config_path: str) -> None:
 
 
 def load_app_args() -> AppArgs:
-    cauldron_config_env = "GNU_CAULDRON_CONFIG" 
+    cauldron_config_env = "REGISTRATION_APP_CONFIG"
     if cauldron_config_env in os.environ:
         return AppArgs(
             config_file_path=os.environ[cauldron_config_env],

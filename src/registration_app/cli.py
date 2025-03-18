@@ -14,8 +14,8 @@ class CliArgs:
 def parse_cli_args() -> CliArgs:
     """Parses CLI args of the app."""
     arg_parser = argparse.ArgumentParser(
-        prog="GNU Tools Cauldron registration",
-        description="App for registrating participants to GNU Tools Cauldron 2024",
+        prog="Conference registration app",
+        description="App for registrating participants to a conference",
         epilog="Contact <tung@iuuk.mff.cuni.cz> in case of any issues",
     )
     arg_parser.add_argument(

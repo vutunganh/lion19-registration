@@ -9,6 +9,7 @@ buffer-size = 65536
 listen = 4096
 
 logto = log/registration_app.log
+catch-exceptions = true
 log-maxsize = 1000000
 log-date = %%Y-%%m-%%d %%H:%%M:%%S
 logformat-strftime = true
@@ -20,12 +21,12 @@ vacuum = true
 die-on-term = true
 max-requests = 10000
 
-mount = /=registration_app:app
+mount = /app=registration_app.main:app
 plugin = python3
 virtualenv = venv
 manage-script-name = true
 
-env = GNU_CAULDRON_CONFIG=etc/config.toml
+env = REGISTRATION_APP_CONFIG=etc/config.toml
 env = GPWEBPAY_CURRENCY=
 env = GPWEBPAY_MERCHANT_CALLBACK_URL=
 env = GPWEBPAY_MERCHANT_ID=

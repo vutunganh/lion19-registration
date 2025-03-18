@@ -41,7 +41,7 @@ class ParticipantInfo:
     @classmethod
     def from_form(cls, participant: RegistrationForm) -> "ParticipantInfo":
         """Creates a `ParticipantInfo` from `RegistrationForm` input."""
-        
+
         return cls(
             postal_mail_opt_out=participant.privacy_policy_postal_mail_opt_out.data,
             email_opt_in=participant.privacy_policy_email_opt_in.data == "yes",
