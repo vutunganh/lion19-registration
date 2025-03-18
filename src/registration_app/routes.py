@@ -13,7 +13,8 @@ from bottle import jinja2_view, request, static_file
 @app.route("/")  # pyright: ignore
 @jinja2_view("home.html.jinja")
 def home():
-    pass
+    form = RegistrationForm()
+    return {"form": form}
 
 
 @app.route("/registration")  # pyright: ignore

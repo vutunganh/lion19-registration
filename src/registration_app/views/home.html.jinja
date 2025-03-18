@@ -30,6 +30,7 @@
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css'>
   <link href="liba/local/css/jquery.bxslider.css" rel="stylesheet" />
   <link href="liba/local/css/sequencejs.css" rel="stylesheet" />
+  <link href="/static/css/style.css" rel="stylesheet" />
 
   <!-- Fav and touch icons -->
   <link rel="shortcut icon" href="images/favicon.ico">
@@ -1017,8 +1018,165 @@ If you need a visa to enter the Czech Republic and attend the LION 19 conference
 <br/>
                 <b>Accompanying person fee includes</b>: Conference dinner and Social program.
               </p>
-              <h2 class="text-center"><b>REGISTRATION & PAYMENT </b></h1>
-                <p> TBA </p>
+              <h2 class="text-center" id="registration"><b>REGISTRATION & PAYMENT </b></h2>
+              <form action="#registration" method="post" id="registration-form">
+                  <h3>Basic information</h3>
+                  <p>Your full name and affiliation will be printed on your nametag.</p>
+
+                  <div class="input-group">
+                      {{ form.full_name.label }}
+                      {{ form.full_name() }}
+                      {% if form.full_name.errors %}
+                          <div class="text-danger">
+                          {% for error in form.full_name.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.affiliation.label }}
+                      {{ form.affiliation() }}
+                      {% if form.affiliation.errors %}
+                          <div class="text-danger">
+                          {% for error in form.affiliation.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <p>We will use your email address for communication regarding organizational matters of the conference and notifying you about successful payment.</p>
+
+                  <div class="input-group">
+                      {{ form.email.label }}
+                      {{ form.email() }}
+                      {% if form.email.errors %}
+                          <div class="text-danger">
+                          {% for error in form.email.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <h3>Invoicing address</h3>
+                  <p>The address and VAT number you enter will be printed on your receipt.</p>
+
+                  <div class="input-group">
+                      {{ form.invoicing_address_line_1.label }}
+                      {{ form.invoicing_address_line_1() }}
+                      {% if form.invoicing_address_line_1.errors %}
+                          <div class="text-danger">
+                          {% for error in form.invoicing_address_line_1.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.invoicing_address_line_2.label }}
+                      {{ form.invoicing_address_line_2() }}
+                      {% if form.invoicing_address_line_2.errors %}
+                          <div class="text-danger">
+                          {% for error in form.invoicing_address_line_2.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.invoicing_address_city.label }}
+                      {{ form.invoicing_address_city() }}
+                      {% if form.invoicing_address_city.errors %}
+                          <div class="text-danger">
+                          {% for error in form.invoicing_address_city.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.invoicing_address_country.label }}
+                      {{ form.invoicing_address_country() }}
+                      {% if form.invoicing_address_country.errors %}
+                          <div class="text-danger">
+                          {% for error in form.invoicing_address_country.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.invoicing_address_zip_code.label }}
+                      {{ form.invoicing_address_zip_code() }}
+                      {% if form.invoicing_address_zip_code.errors %}
+                          <div class="text-danger">
+                          {% for error in form.invoicing_address_zip_code.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.invoicing_address_vat_number.label }}
+                      {{ form.invoicing_address_vat_number() }}
+                      {% if form.invoicing_address_vat_number.errors %}
+                          <div class="text-danger">
+                          {% for error in form.invoicing_address_vat_number.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <h3>Registration type</h3>
+                  <p>Your registration fee depends on the registration type you select below.</p>
+                  <div class="input-group">
+                      {{ form.registration_type.label }}
+                      {{ form.registration_type() }}
+                      {% if form.registration_type.errors %}
+                          <div class="text-danger">
+                          {% for error in form.registration_type.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <div class="input-group">
+                      {{ form.remarks.label }}
+                      {{ form.remarks() }}
+                      {% if form.remarks.errors %}
+                          <div class="text-danger">
+                          {% for error in form.remarks.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
+                  <h3>Final information</h3>
+                  <p>After submitting this form, you will be redirected to the payment gate where you will pay the registration fee.</p>
+                  <p>The conference fee includes access to the conference and the workshops, proceedings publishing fee,  technical support, coffee breaks and lunches, and the conference dinner.</p>
+                  <p>The recipient of the registration fee is<br>
+                  <ul>
+                      <li>Univerzita Karlova, Matematicko-fyzikální fakulta</li>
+                      <li>Ke Karlovu 3, 121 16 Praha 2</li>
+                      <li>IČ: 00216208, DIČ: CZ00216208</li>
+                  </ul>
+                  </p>
+
+                  <div class="input-group">
+                      {{ form.submit() }}
+                  </div>
+              </form>
 <!--<p>Also, be sure you have read the <a href="index.php?option=com_content&amp;view=article&amp;id=14:data-privacy-statement&amp;catid=2:uncategorised">data privacy statement</a>.</p>-->
 
             </hgroup>

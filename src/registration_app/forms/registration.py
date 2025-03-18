@@ -1,7 +1,6 @@
 """Registration form for the participants."""
 
 from wtforms import (
-    BooleanField,
     EmailField,
     Form,
     RadioField,
@@ -26,88 +25,91 @@ def filter_empty_string_to_none():
 
 
 class RegistrationForm(Form):
-    """Registration form for STOC participants.
+    """Registration form for participants.
 
     Validator constraints have to be manually synchronized with:
     - `registration_app/db/migrations` to match the database schema
     """
 
-    anti_harassment_check = BooleanField(
-        "Anti Harassment",
-        [
-            validators.InputRequired(),
-        ],
-    )
-
-    privacy_policy_postal_mail_opt_out = BooleanField(
-        "Postal Mail Opt-Out",
-    )
-    privacy_policy_email_opt_in = RadioField(
-        "E-mail Opt-In",
-        [
-            validators.InputRequired(),
-        ],
-        choices=[
-            (
-                "yes",
-                "Yes, please send me ACM Announcements via email",
-            ),
-            (
-                "no",
-                "No, please do not send me ACM Announcements via email",
-            ),
-        ],
-    )
-
     full_name = StringField(
-        "Full Name (required)",
+        "Full Name",
         [
             validators.InputRequired(),
             validators.Length(max=512),
         ],
-        description="Full name will be printed on the nametag",
     )
     affiliation = StringField(
         "Affiliation",
-        description="Your affiliation",
+        [
+            validators.Length(256),
+        ],
         filters=filter_empty_string_to_none(),
     )
-
     email = EmailField(
-        "Email address (required)",
+        "Email address",
+        [
+            validators.InputRequired(),
+            validators.Length(max=512),
+        ],
+    )
+
+    invoicing_address_line_1 = StringField(
+        "Address Line 1",
         [
             validators.InputRequired(),
             validators.Length(max=256),
         ],
-        description="This email address will be used to communicate with you",
+    )
+    invoicing_address_line_2 = StringField(
+        "Address Line 2",
+        [
+            validators.Length(max=256),
+        ],
+    )
+    invoicing_address_city = StringField(
+        "City",
+        [
+            validators.Length(max=256),
+        ],
+    )
+    invoicing_address_country = StringField(
+        "Country",
+        [
+            validators.InputRequired(),
+            validators.Length(max=256),
+        ],
+    )
+    invoicing_address_zip_code = StringField(
+        "ZIP Code",
+        [
+            validators.Length(max=64),
+        ],
+    )
+    invoicing_address_vat_number = StringField(
+        "VAT Number",
+        [
+            validators.Length(max=64),
+        ],
     )
 
-    acm_membership_number = StringField(
-        "ACM Membership number",
+    registration_type = RadioField(
+        "Registration type",
         [
-            validators.Length(max=64),
+            validators.InputRequired(),
         ],
-        filters=filter_empty_string_to_none(),
-    )
-    ieee_membership_number = StringField(
-        "IEEE Membership number",
-        [
-            validators.Length(max=64),
+        choices=[
+            ("REGULAR", "Regular"),
+            ("STUDENT", "Student"),
+            ("ACCOMPANYING", "Accompanying"),
         ],
-        filters=filter_empty_string_to_none(),
     )
-    is_student = BooleanField("Are you a student?")
 
     remarks = TextAreaField(
         "Remarks (including dietary restrictions, accessibility requirements, etc.)",
         [
             validators.Length(max=16384),
         ],
-        description=(
-            "Add any remarks you might have, e.g. dietary restrictions,"
-            " accessibility requirements, etc."
-        ),
         filters=filter_empty_string_to_none(),
     )
 
-    submit = SubmitField("Register")
+    submit = SubmitField("Register and proceed to payment")
