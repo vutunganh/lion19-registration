@@ -1,2 +1,3 @@
 include src/registration_app/db/migrations/ *
 recursive-include src/registration_app/static/ *
+recursive-include src/registration_app/views/ *
