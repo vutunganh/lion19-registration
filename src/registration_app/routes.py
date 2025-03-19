@@ -17,16 +17,9 @@ def home():
     return {"form": form}
 
 
-@app.route("/registration")  # pyright: ignore
-@jinja2_view("registration.html.jinja")
-def show_registration_form():
-    form = RegistrationForm()
-    return {"form": form}
-
-
-@app.post("/registration")  # pyright: ignore
-@jinja2_view("registration.html.jinja")
-def register_participant():
+@app.post("/")  # pyright: ignore
+@jinja2_view("home.html.jinja")
+def register():
     form = RegistrationForm(request.forms)  # pyright: ignore
     if not form.validate():
         return {"form": form}

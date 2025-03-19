@@ -225,39 +225,6 @@ wheels = [
 ]
 
 [[package]]
-name = "lion19-registration"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "bottle" },
-    { name = "gpwebpay" },
-    { name = "httpx" },
-    { name = "jinja2" },
-    { name = "psycopg" },
-    { name = "wtforms" },
-    { name = "yoyo-migrations" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "ruff" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "bottle", specifier = ">=0.13.2" },
-    { name = "gpwebpay", specifier = ">=0.1.4" },
-    { name = "httpx", specifier = ">=0.28.1" },
-    { name = "jinja2", specifier = ">=3.1.5" },
-    { name = "psycopg", specifier = ">=3.2.3" },
-    { name = "wtforms", specifier = ">=3.2.1" },
-    { name = "yoyo-migrations", specifier = ">=9.0.0" },
-]
-
-[package.metadata.requires-dev]
-dev = [{ name = "ruff", specifier = ">=0.9.4" }]
-
-[[package]]
 name = "markupsafe"
 version = "3.0.2"
 source = { registry = "https://pypi.org/simple" }
@@ -371,6 +338,39 @@ sdist = { url = "https://files.pythonhosted.org/packages/4c/9e/95b06d832d8e5bbc6
 wheels = [
     { url = "https://files.pythonhosted.org/packages/cb/2a/07f87440444fdf2c5870a710b6770d766a1c7df9c827b0c90e807f1fb4c5/python_dotenv-0.13.0-py2.py3-none-any.whl", hash = "sha256:25c0ff1a3e12f4bde8d592cc254ab075cfe734fc5dd989036716fd17ee7e5ec7", size = 17722 },
 ]
+
+[[package]]
+name = "registration-app"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "bottle" },
+    { name = "gpwebpay" },
+    { name = "httpx" },
+    { name = "jinja2" },
+    { name = "psycopg" },
+    { name = "wtforms" },
+    { name = "yoyo-migrations" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ruff" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "bottle", specifier = ">=0.13.2" },
+    { name = "gpwebpay", specifier = ">=0.1.4" },
+    { name = "httpx", specifier = ">=0.28.1" },
+    { name = "jinja2", specifier = ">=3.1.5" },
+    { name = "psycopg", specifier = ">=3.2.3" },
+    { name = "wtforms", specifier = ">=3.2.1" },
+    { name = "yoyo-migrations", specifier = ">=9.0.0" },
+]
+
+[package.metadata.requires-dev]
+dev = [{ name = "ruff", specifier = ">=0.9.4" }]
 
 [[package]]
 name = "requests"

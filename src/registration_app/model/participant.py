@@ -2,55 +2,60 @@
 
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum, auto
+from enum import Enum
 
 from registration_app.forms.registration import RegistrationForm
 
 
-class RegistrationFeeType(Enum):
-    """Participant registration fee types.
+class ParticipantType(str, Enum):
+    """Participant fee types.
 
-    There are three types of fees:
-    - full fee
-    - discounted fee (for ACM or IEEE members)
-    - student fee
+    Mainly used for determining the fee type.
     """
 
-    FULL = auto()
-    DISCOUNTED = auto()
-    STUDENT = auto()
+    REGULAR = "REGULAR"
+    STUDENT = "STUDENT"
+    ACCOMPANYING = "ACCOMPANYING"
 
 
 @dataclass
 class ParticipantInfo:
     """Information a participant provides us in the registration form."""
 
-    postal_mail_opt_out: bool
-    email_opt_in: bool
-
     full_name: str
     affiliation: str | None
     email: str
 
-    acm_membership_number: str | None
-    ieee_membership_number: str | None
-    is_student: bool
+    invoicing_address_line_1: str
+    invoicing_address_line_2: str | None
+    invoicing_address_city: str | None
+    invoicing_address_country: str
+    invoicing_address_zip_code: str | None
+    invoicing_vat_number: str | None
+
+    participant_type: ParticipantType
 
     remarks: str | None
 
     @classmethod
-    def from_form(cls, participant: RegistrationForm) -> "ParticipantInfo":
+    def from_form(
+        cls,
+        participant: RegistrationForm,
+        participant_type: ParticipantType,
+    ) -> "ParticipantInfo":
         """Creates a `ParticipantInfo` from `RegistrationForm` input."""
 
         return cls(
-            postal_mail_opt_out=participant.privacy_policy_postal_mail_opt_out.data,
-            email_opt_in=participant.privacy_policy_email_opt_in.data == "yes",
             full_name=participant.full_name.data,  # pyright: ignore
             affiliation=participant.affiliation.data,
             email=participant.email.data,  # pyright: ignore
-            acm_membership_number=participant.acm_membership_number.data,
-            ieee_membership_number=participant.ieee_membership_number.data,
-            is_student=participant.is_student.data,
+            invoicing_address_line_1=participant.invoicing_address_line_1.data,  # pyright: ignore
+            invoicing_address_line_2=participant.invoicing_address_line_2.data,
+            invoicing_address_city=participant.invoicing_address_city.data,
+            invoicing_address_country=participant.invoicing_address_country.data,  # pyright: ignore
+            invoicing_address_zip_code=participant.invoicing_address_zip_code.data,
+            invoicing_vat_number=participant.invoicing_vat_number.data,
+            participant_type=participant_type,
             remarks=participant.remarks.data,
         )
 
@@ -59,4 +64,3 @@ class ParticipantInfo:
 class Participant(ParticipantInfo):
     id: int
     date_registered: datetime
-    fee_type: RegistrationFeeType

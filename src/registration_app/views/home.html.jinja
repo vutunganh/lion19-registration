@@ -103,7 +103,7 @@
               <li><a href="#important">Important Dates</a></li>
               <li><a href="#invited">Invited talks</a></li>
                <li><a href="#submission">Paper submission & Proceedings</a></li> 
-              <!--<li><a href="#registration">Registration</a></li>	<br>-->
+              <li><a href="#registration">Registration</a></li>	<br>
                <li><a href="#special">Special sessions</a></li> 
               <li><a href="#program">Program</a></li>
               <!-- <li>
@@ -1125,11 +1125,11 @@ If you need a visa to enter the Czech Republic and attend the LION 19 conference
                   </div>
 
                   <div class="input-group">
-                      {{ form.invoicing_address_vat_number.label }}
-                      {{ form.invoicing_address_vat_number() }}
-                      {% if form.invoicing_address_vat_number.errors %}
+                      {{ form.invoicing_vat_number.label }}
+                      {{ form.invoicing_vat_number() }}
+                      {% if form.invoicing_vat_number.errors %}
                           <div class="text-danger">
-                          {% for error in form.invoicing_address_vat_number.errors %}
+                          {% for error in form.invoicing_vat_number.errors %}
                               <small>{{ error }}</small>
                           {% endfor %}
                           </div>

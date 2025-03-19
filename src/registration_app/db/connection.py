@@ -5,7 +5,7 @@ import logging
 
 from registration_app import APP_NAME
 from registration_app.app import app
-from registration_app.model.participant import RegistrationFeeType
+from registration_app.model.participant import ParticipantType
 
 import psycopg
 from bottle import request, response
@@ -35,13 +35,13 @@ def perform_migrations(connection_str: str):
 
 def register_enums(connection_str: str):
     db = psycopg.connect(connection_str)
-    info = EnumInfo.fetch(db, "registration_fee_type")
+    info = EnumInfo.fetch(db, "participant_type")
     if info is None:
         raise RuntimeError(
-            "`registration_fee_type` should be an enum defined in the database but"
+            "`participant_type` should be an enum defined in the database but"
             " it could not be found"
         )
-    register_enum(info, db, RegistrationFeeType)
+    register_enum(info, db, ParticipantType)
 
 
 @app.hook("before_request")

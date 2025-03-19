@@ -41,7 +41,7 @@ class RegistrationForm(Form):
     affiliation = StringField(
         "Affiliation",
         [
-            validators.Length(256),
+            validators.Length(max=256),
         ],
         filters=filter_empty_string_to_none(),
     )
@@ -85,7 +85,7 @@ class RegistrationForm(Form):
             validators.Length(max=64),
         ],
     )
-    invoicing_address_vat_number = StringField(
+    invoicing_vat_number = StringField(
         "VAT Number",
         [
             validators.Length(max=64),
