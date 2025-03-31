@@ -25,9 +25,9 @@ def add_participant(participant: ParticipantInfo) -> int:
             """
             INSERT INTO
             participant
-            (full_name, affiliation, email, invoicing_address_line_1, invoicing_address_line_2, invoicing_address_city, invoicing_address_country, invoicing_address_zip_code, invoicing_vat_number, participant_type, remarks)
+            (full_name, affiliation, email, invoicing_address_line_1, invoicing_address_line_2, invoicing_address_city, invoicing_address_country, invoicing_address_zip_code, invoicing_vat_number, participant_type, remarks, photo_consent)
             VALUES
-            (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
             RETURNING id
             """,
             (
@@ -42,6 +42,7 @@ def add_participant(participant: ParticipantInfo) -> int:
                 participant.invoicing_vat_number,
                 participant.participant_type,
                 participant.remarks,
+                participant.photo_consent,
             ),
         )
         return cursor.fetchone()[0]  # pyright: ignore
@@ -56,7 +57,7 @@ def get_all_participants() -> list[Participant]:
                    invoicing_address_line_2, invoicing_address_city,
                    invoicing_address_country, invoicing_address_zip_code,
                    invoicing_vat_number, participant_type, remarks, id, date_registered,
-                   has_paid
+                   has_paid, photo_consent
             FROM participant
             ORDER BY date_registered DESC
             """,
@@ -79,6 +80,7 @@ def get_all_participants() -> list[Participant]:
                 id=r[11],
                 date_registered=r[12],
                 has_paid=r[13],
+                photo_consent=r[14],
             )
             for r in results
         ]
@@ -96,7 +98,7 @@ def record_successful_payment(id: int) -> ParticipantInfo:
             RETURNING full_name, affiliation, email, invoicing_address_line_1,
                       invoicing_address_line_2, invoicing_address_city,
                       invoicing_address_country, invoicing_address_zip_code,
-                      invoicing_vat_number, participant_type, remarks
+                      invoicing_vat_number, participant_type, remarks, photo_consent
             """,
             (id,),
         )
@@ -114,6 +116,7 @@ def record_successful_payment(id: int) -> ParticipantInfo:
             invoicing_vat_number=row[8],
             participant_type=row[9],
             remarks=row[10],
+            photo_consent=row[11],
         )
 
 
