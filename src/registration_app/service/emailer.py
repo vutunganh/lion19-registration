@@ -68,8 +68,8 @@ class Emailer:
         try:
             smtp = SMTP_SSL(self.server)
             if (
-                app.config["registration_app.Email.auth.username"]
-                and app.config["registration_app.Email.auth.password"]
+                "registration_app.Email.auth.username" in app.config
+                and "registration_app.Email.auth.password" in app.config
             ):
                 smtp.login(
                     app.config["registration_app.Email.auth.username"],
