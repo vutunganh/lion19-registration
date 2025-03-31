@@ -85,6 +85,12 @@ def register_participant(
         return res
 
     payment_amount = determine_payment_amount(participant_type)
+    if participant_info.email in [
+        "hartman@iuuk.mff.cuni.cz",
+        "tung@iuuk.mff.cuni.cz",
+        "hladik@kam.mff.cuni.cz",
+    ]:
+        payment_amount = 1
     payment_amount *= int(
         app.config["registration_app.Payment.price.smallest_unit_multiplier"],
     )
