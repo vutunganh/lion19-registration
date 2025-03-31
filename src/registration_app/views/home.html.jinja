@@ -1112,6 +1112,23 @@ If you need a visa to enter the Czech Republic and attend the LION 19 conference
                       {% endif %}
                   </div>
 
+                  <h3>Photography &amp; Media Consent</h3>
+                  <p>
+                  We may take photos and videos during the conference for promotional and marketing purposes (e.g., website, social media, brochures).
+                  Do you consent to us using images in which you may appear?
+                  </p>
+                  <div class="input-group">
+                      {{ form.photo_consent.label }}
+                      {{ form.photo_consent() }}
+                      {% if form.photo_consent.errors %}
+                          <div class="text-danger">
+                          {% for error in form.photo_consent.errors %}
+                              <small>{{ error }}</small>
+                          {% endfor %}
+                          </div>
+                      {% endif %}
+                  </div>
+
                   <h3>Final information</h3>
                   <p>After submitting this form, you will be redirected to the payment gate where you will pay the registration fee.</p>
                   <p>The recipient of the registration fee is<br>

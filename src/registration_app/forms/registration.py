@@ -112,4 +112,15 @@ class RegistrationForm(Form):
         filters=filter_empty_string_to_none(),
     )
 
+    photo_consent = RadioField(
+        "Do you consent with us taking your photos?",
+        [
+            validators.InputRequired(),
+        ],
+        choices=[
+            ("YES", "Yes, I give my consent"),
+            ("NO", "No, I do not give my consent"),
+        ],
+    )
+
     submit = SubmitField("Register and proceed to payment")
