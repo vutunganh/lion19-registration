@@ -1,6 +1,6 @@
 Dear $full_name,
 
-Thank you for registering for STOC 2025.
+Thank you for registering for LION19.
 
 Please, pay your registration fee at the following link, unless you have
 already done so.
@@ -8,4 +8,4 @@ already done so.
   $payment_link
 
 Best wishes,
-  STOC Organizing Committee
+  LION19 Organizing Committee

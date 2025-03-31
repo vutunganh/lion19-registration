@@ -1,3 +1,4 @@
 recursive-include src/registration_app/db/migrations/ *
+recursive-include src/registration_app/email_templates/ *
 recursive-include src/registration_app/static/ *
 recursive-include src/registration_app/views/ *
