@@ -9,6 +9,7 @@ from enum import Enum
 from smtplib import SMTP_SSL
 
 from registration_app import APP_NAME
+from registration_app.app import app
 
 logger = logging.getLogger(__name__)
 
@@ -66,6 +67,14 @@ class Emailer:
 
         try:
             smtp = SMTP_SSL(self.server)
+            if (
+                app.config["registration_app.Email.auth.username"]
+                and app.config["registration_app.Email.auth.password"]
+            ):
+                smtp.login(
+                    app.config["registration_app.Email.auth.username"],
+                    app.config["registration_app.Email.auth.password"],
+                )
             smtp.send_message(mail)
         except Exception:
             logger.exception(f"Could not send email to {mail['To']}")
