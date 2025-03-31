@@ -13,8 +13,12 @@ from bottle import request
 logger = logging.getLogger(__name__)
 
 
-def add_participant(participant: ParticipantInfo) -> None:
-    """INSERTs a participant."""
+def add_participant(participant: ParticipantInfo) -> int:
+    """INSERTs a participant.
+
+    Returns:
+        ID of the INSERTed participant.
+    """
     db: psycopg.Connection = request.db
     with db.cursor() as cursor:
         cursor.execute(
@@ -24,6 +28,7 @@ def add_participant(participant: ParticipantInfo) -> None:
             (full_name, affiliation, email, invoicing_address_line_1, invoicing_address_line_2, invoicing_address_city, invoicing_address_country, invoicing_address_zip_code, invoicing_vat_number, participant_type, remarks)
             VALUES
             (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            RETURNING id
             """,
             (
                 participant.full_name,
@@ -39,6 +44,7 @@ def add_participant(participant: ParticipantInfo) -> None:
                 participant.remarks,
             ),
         )
+        return cursor.fetchone()[0]  # pyright: ignore
 
 
 def get_all_participants() -> list[Participant]:
@@ -49,7 +55,8 @@ def get_all_participants() -> list[Participant]:
             SELECT full_name, affiliation, email, invoicing_address_line_1,
                    invoicing_address_line_2, invoicing_address_city,
                    invoicing_address_country, invoicing_address_zip_code,
-                   invoicing_vat_number, participant_type, remarks, id, date_registered
+                   invoicing_vat_number, participant_type, remarks, id, date_registered,
+                   has_paid
             FROM participant
             ORDER BY date_registered DESC
             """,
@@ -71,6 +78,52 @@ def get_all_participants() -> list[Participant]:
                 remarks=r[10],
                 id=r[11],
                 date_registered=r[12],
+                has_paid=r[13],
             )
             for r in results
         ]
+
+
+def record_successful_payment(id: int) -> ParticipantInfo:
+    """Records a successful payment for participant with ID `id`."""
+    db: psycopg.Connection = request.db
+    with db.cursor() as cursor:
+        cursor.execute(
+            """
+            UPDATE participant
+            SET has_paid = TRUE
+            WHERE id = %s
+            RETURNING full_name, affiliation, email, invoicing_address_line_1,
+                      invoicing_address_line_2, invoicing_address_city,
+                      invoicing_address_country, invoicing_address_zip_code,
+                      invoicing_vat_number, participant_type, remarks
+            """,
+            (id,),
+        )
+        row = cursor.fetchone()
+        assert row is not None
+        return ParticipantInfo(
+            full_name=row[0],
+            affiliation=row[1],
+            email=row[2],
+            invoicing_address_line_1=row[3],
+            invoicing_address_line_2=row[4],
+            invoicing_address_city=row[5],
+            invoicing_address_country=row[6],
+            invoicing_address_zip_code=row[7],
+            invoicing_vat_number=row[8],
+            participant_type=row[9],
+            remarks=row[10],
+        )
+
+
+def delete_participant_by_id(id: int) -> None:
+    db: psycopg.Connection = request.db
+    with db.cursor() as cursor:
+        cursor.execute(
+            """
+            DELETE FROM participant
+            WHERE id = %s
+            """,
+            (id,),
+        )

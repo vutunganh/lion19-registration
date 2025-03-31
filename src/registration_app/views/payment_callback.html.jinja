@@ -1,0 +1,32 @@
+{% extends "base.jinja" %}
+{% block content %}
+  <section class="content-section about-us" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          {% if res.errors | length > 0%}
+              <section class="form-message form-message--error">
+                  <h1>Payment unsuccessful</h1>
+                  Your payment did not succeed for the following reasons:
+                  <ul>
+                      {% for e in res.errors %}
+                          <li>{{ e }}</li>
+                      {% endfor %}
+                  </ul>
+                  Please contact us at <a href="mailto:{{ contact_email }}">{{ contact_email }}</a> for further help.
+              </section>
+          {% else %}
+              <section class="form-message form-message--success">
+                  <h1>Payment successful</h1>
+                  <p>
+                  We have successfully received your payment.
+                  You should receive a receipt in your email inbox soon.
+                  See you in Prague!
+                  </p>
+              </section>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

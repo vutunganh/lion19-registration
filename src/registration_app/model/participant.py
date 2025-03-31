@@ -64,3 +64,4 @@ class ParticipantInfo:
 class Participant(ParticipantInfo):
     id: int
     date_registered: datetime
+    has_paid: bool

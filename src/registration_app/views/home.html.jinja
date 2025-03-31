@@ -1,83 +1,5 @@
-<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-  <title>LION19 - The 2025 Learning and Intelligent Optimization Conference </title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="author" content="Sprintheme">
-  <meta charset="UTF-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-  <link href="liba/isotope/css/style.css" rel="stylesheet" />
-  <link href="liba/fontello/css/fontello.css" rel="stylesheet" />
-  <link href="liba/local/css/style.css" rel="stylesheet" />
-  <link href="liba/local/css/color-azure-blue.css" rel="stylesheet" />
-  <link href="liba/local/css/color-chestnut.css" rel="stylesheet" />
-  <link href="liba/local/css/color-frog.css" rel="stylesheet" />
-  <link href="liba/local/css/color-grass.css" rel="stylesheet" />
-  <link href="liba/local/css/color-pale-brown.css" rel="stylesheet" />
-  <link href="liba/local/css/color-plum.css" rel="stylesheet" />
-  <link href="liba/local/css/color-red.css" rel="stylesheet" />
-  <link href="liba/local/css/color-titian.css" rel="stylesheet" />
-  <link href="liba/local/css/color-twitter.css" rel="stylesheet" />
-  <link href="liba/local/css/color-yellow.css" rel="stylesheet" />
-  <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
-  <link
-    href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,greek-ext,greek,vietnamese,latin-ext,cyrillic'
-    rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300' rel='stylesheet' type='text/css'>
-  <link href="liba/local/css/jquery.bxslider.css" rel="stylesheet" />
-  <link href="liba/local/css/sequencejs.css" rel="stylesheet" />
-  <link href="static/css/style.css" rel="stylesheet" />
-
-  <!-- Fav and touch icons -->
-  <link rel="shortcut icon" href="images/favicon.ico">
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-  <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
-  <!--[if lt IE 9]>
-
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-
-    <![endif]-->
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="liba/local/js/jquery.bxslider.js"></script>
-  <script src="liba/local/js/bx-responsive.js"></script>
-  <script src="liba/local/js/jquery.cycle2.js"></script>
-  <script src="liba/local/js/jquery.cycle2.carousel.js"></script>
-  <script src="liba/local/js/animation.js"></script>
-  <script src="liba/local/js/jquery.validate.js"></script>
-  
-  <script>
-  $('.navbar-nav li a').on('click', function(){
-    if(!$( this ).hasClass('dropdown-toggle')){
-        $('.navbar-collapse').collapse('hide');
-    }
-});</script>
-
-  <style>
-    .text {
-      text-align: justify;
-    }
-    img.circle {
-      border-radius: 50%;
-    }
-  </style>
-
-</head>
-
-<body class="home" data-body-class="titian">
-
-  <!-- Start Header section -->
-
+{% extends "base.jinja" %}
+{% block content %}
   <header class="navbar navbar-default navbar-fixed-top nav-transparent" role="navigation" id="navbar-top">
     <div class="container">
       <div class="row">
@@ -1019,6 +941,34 @@ If you need a visa to enter the Czech Republic and attend the LION 19 conference
                 <b>Accompanying person fee includes</b>: Conference dinner and Social program.
               </p>
               <h2 class="text-center" id="registration"><b>REGISTRATION & PAYMENT </b></h2>
+
+              <div id="registration-status">
+                  {% if registration_result %}
+                      {% if registration_result.payment_link %}
+                          <div class="form-message form-message--success">
+                              <h3>Registration successful</h3>
+                              We have successfully recorded your registration.
+                              You should be automatically redirected to the payment gate to pay the registration fee.
+                              Or you can manually click this link: <a href="{{registration_result.payment_link}}">Link to payment gate</a>.
+                          </div>
+                          <script>
+                              setTimeout(() => { window.location.href = "{{registration_result.payment_link}}" }, 5000);
+                          </script>
+                      {% endif %}
+                      {% if registration_result.errors %}
+                          <div class="form-message form-message--error">
+                              <h3>Registration unsuccessful</h3>
+                              The following errors have occurred while registering you.
+                              <ul>
+                                  {% for e in registration_result.errors %}
+                                      <li>{{ e }}</li>
+                                  {% endfor %}
+                              </ul>
+                          </div>
+                      {% endif %}
+                  {% endif %}
+              </div>
+
               <form action="#registration" method="post" id="registration-form">
                   <h3>Basic information</h3>
                   <p>Your full name and affiliation will be printed on your nametag.</p>
@@ -1164,7 +1114,6 @@ If you need a visa to enter the Czech Republic and attend the LION 19 conference
 
                   <h3>Final information</h3>
                   <p>After submitting this form, you will be redirected to the payment gate where you will pay the registration fee.</p>
-                  <p>The conference fee includes access to the conference and the workshops, proceedings publishing fee,  technical support, coffee breaks and lunches, and the conference dinner.</p>
                   <p>The recipient of the registration fee is<br>
                   <ul>
                       <li>Univerzita Karlova, Matematicko-fyzikální fakulta</li>
@@ -1209,94 +1158,4 @@ If you need a visa to enter the Czech Republic and attend the LION 19 conference
     </div>
   </div>
 </section>
-
-
-                <!--End Contest Page-->
-
-                <!-- </p>
-                </p>
-              </hgroup>
-            </header>
-          </article>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-
-
-  <!--Footer Start-->
-  <div class="footerpadding"></div>
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <nav class="footer-navigation">
-            <ul class="nav">
-              <li><a href="#home">Home</a></li>
-              <!-- <li><a href="#about">About</a></li> -->
-              <!-- <li><a href="#contact">Contact</a></li> -->
-            </ul>
-          </nav>
-          <p class="copyright">© 2005-2024 LION - <a href="https://intelligent-optimization.org/" target="_blank"> Learning and Intelligent Optimization </a> <br />
-            <!--Web site maintained by <a href="https://intelligent-optimization.org/~dalcastagne/" target="_blank">Manuel Dalcastagn&egrave;</a>, LION Lab, University of Trento. <br/>
-Note: this site is currently optimized for Google Chrome, Microsoft Edge and Mozilla Firefox.	
--->
-          </p>
-          <p class="copyright">Header photos from Unsplash (William Zhang -header1 , Lachlan Gowen -header2, Alice -header3) </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!--Footer end-->
-
-  <!--Begin Scroll top-->
-  <div id="scroll-up" class="scroll-up"><i class="icon-up-open-big"></i></div>
-  <!--End Scroll top-->
-
-
-  <!-- Bootstrap core JavaScrdipt
-
-================================================== -->
-
-  <!-- Placed at the end of the document so the pages load faster -->
-
-  <script src="liba/local/js/jquery.easing.1.3.min.js"></script>
-  <script src="liba/bootstrap/js/transition.js"></script>
-  <script src="liba/bootstrap/js/alert.js"></script>
-  <script src="liba/bootstrap/js/modal.js"></script>
-
-  <!--<script src="liba/bootstrap/js/dropdown.js"></script>-->
-
-  <script src="liba/bootstrap/js/bootstrap.min.js"></script>
-  <script src="liba/bootstrap/js/twitter-bootstrap-hover-dropdown.js"></script>
-  <script src="liba/bootstrap/js/scrollspy.js"></script>
-  <script src="liba/bootstrap/js/affix.js"></script>
-  <script src="liba/bootstrap/js/tab.js"></script>
-  <script src="liba/bootstrap/js/tooltip.js"></script>
-  <script src="liba/bootstrap/js/popover1.js"></script>
-  <script src="liba/bootstrap/js/button.js"></script>
-  <script src="liba/bootstrap/js/collapse.js"></script>
-  <script src="liba/isotope/js/jquery.isotope.min.js"></script>
-
-  <script src="liba/local/js/jquery.lazy.js"></script>
-
-
-  <script src="liba/local/js/jquery.parallax-1.1.3.js"></script>
-  <script src="liba/local/js/custom-script.js"></script>
-
-  <!--   <script src="liba/local/js/jquery.queryloader2.js"></script>
--->
-  <script src="liba/local/js/jquery.easypiechart.js"></script>
-  <!--<script src="liba/local/js/jquery.validate.js"></script>-->
-  <!-- JS youtube video -->
-  <!--script src="liba/local/js/videojs/jquery.mb.YTPlayer.js"></script>
-<script src="liba/local/js/videojs/device.min.js" ></script>
-<script src="liba/local/js/videojs/bgvideo-youtube-init.js" ></script-->
-  <script src="liba/local/js/jquery.sequence.js"></script>
-  <script src="liba/local/js/sequencejs.js"></script>
-</body>
-
-
-</html>
-
+{% endblock %}

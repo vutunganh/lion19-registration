@@ -27,6 +27,13 @@ def register():
     return {"form": form, "registration_result": registration_result}
 
 
+@app.get("/payment-callback")  # pyright: ignore
+@jinja2_view("payment_callback.html.jinja")
+def payment_callback():
+    res = participant.validate_payment(request.url)
+    return {"res": res}
+
+
 @app.route(r"/static/<filepath:path>")  # pyright: ignore
 def serve_static_file(filepath: str):
     with resources.path(APP_NAME, "static") as p:
