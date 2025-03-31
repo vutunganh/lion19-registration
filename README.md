@@ -40,20 +40,20 @@ These instruction are obtained by reverse-engineering the HALG 2023 version of t
 
 1. Create a directory containing the app and its configuration files, e.g. `~/registration`.
 1. Copy contents of `init/skeleton` to `~/registration`.
-  * `cp -r init/skeleton/* ~/registration/`.
-  * At the moment of writing, it should be three directories: `etc`, `var`, `log`.
+    * `cp -r init/skeleton/* ~/registration/`.
+    * At the moment of writing, it should be three directories: `etc`, `var`, `log`.
 1. Create a user service using `init/cauldron_reg.service`.
-  * Put it in `~/.config/systemd/user/` directory and run `systemctl --user enable --now cauldron_reg`.
+    * Put it in `~/.config/systemd/user/` directory and run `systemctl --user enable --now cauldron_reg`.
 1. Create a virtual environment in `~registration` named `venv`.
-  * `python3 -m venv ~/registration/venv`.
+    * `python3 -m venv ~/registration/venv`.
 1. There should now be two config files in `~/registration/etc/`.
-  1. One of them is `config.toml`. The configuration is straightforward.
-  2. The second one is `cauldron.uwsgi`.
-  Here you need to go to the end where there is a bunch of lines starting with `env = SOMETHING_ALL_CAPS=`.
-  This is for setting necessary environment variables.
-  Simply put the values after the last `=` sign.
-  Avoid values that have a `%` because they get "interpreted" by the configuration language.
-  If needed `%%` is one `%`.
-  3. In the fields with public or private keys, put the base64 encoded keys without newlines.
-  Hence a command like `base64 < key_file | tr -d '\n'` should work.
+    1. One of them is `config.toml`. The configuration is straightforward.
+        * In fields that are either private or public keys a base64 encoded key is expected.
+        Something like `cat file_with_keys.pub | base64 -w0` should output the right thing.
+    3. The second one is `cauldron.uwsgi`.
+    Here you need to go to the end where there is a bunch of lines starting with `env = SOMETHING_ALL_CAPS=`.
+    This is for setting necessary environment variables.
+    Simply put the values after the last `=` sign.
+    Avoid values that have a `%` because they get "interpreted" by the configuration language.
+    If needed `%%` is one `%`.
 1. Run `deploy.sh` once.
