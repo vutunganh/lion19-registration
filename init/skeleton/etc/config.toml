@@ -9,11 +9,32 @@ server = "kam.mff.cuni.cz"
 from = "<sender>@kam.mff.cuni.cz"
 cc = []
 
+[Email.auth]
+# If username or password is not supplied, then the smtp library will try to send the
+# email from the current user's UNIX account.
+# username = "something"
+# password = "something"
+
 [Email.content]
 subject_prefix = "<some_prefix>"
 
 [Payment]
-enabled = false
-# Prices are in GBP in the smallest unit. E.g. 4100 is 41 pounds or 4100 pences.
-price = 7500
 receipt_description = "Registration fee" # not used atm because the payment gate library sucks
+
+[Payment.price]
+regular = 13000
+student = 11000
+accompanying = 5000
+# How many of smallest units of currency is one main unit of currency? E.g. 100 cents
+# is one euro.
+smallest_unit_multiplier = 100
+
+[Payment.gpwebpay]
+currency = "203" # Use ISO currency code. E.g. 203 is CZK, 978 is EUR.
+deposit_flag = "1"
+callback_url = "http://localhost:8080/payment-callback"
+merchant_id = ""
+private_key = ""
+private_key_passphrase = ""
+public_key = ""
+url = "https://test.3dsecure.gpwebpay.com/pgw/order.do"
