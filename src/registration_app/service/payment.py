@@ -4,6 +4,9 @@ import base64
 import logging
 import urllib.parse
 
+from registration_app.app import app
+
+import gpwebpay.config as gpwebpay_config
 from gpwebpay import gpwebpay
 from gpwebpay.config import configuration as GPWebpayConfig
 
@@ -91,3 +94,36 @@ def handle_payment_callback(callback_url: str) -> int:
         logger.error(f"Payment unsuccessful. URL: '{callback_url}'")
         raise PaymentUnsuccessfulException("Your payment did not end successfully.")
     return int(order_num)
+
+
+def configure_gpwebpay() -> None:
+    """gpwebpay uses a dumb way to configure itself. Here we override the way the
+    configuration is done.
+
+    Basically, we take configuration from the toml file and we create a new config
+    object using our information.
+    """
+    gpwebpay_config.configuration.GPWEBPAY_CURRENCY = app.config[
+        "registration_app.Payment.gpwebpay.currency"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_DEPOSIT_FLAG = app.config[
+        "registration_app.Payment.gpwebpay.deposit_flag"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_MERCHANT_CALLBACK_URL = app.config[
+        "registration_app.Payment.gpwebpay.callback_url"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_MERCHANT_ID = app.config[
+        "registration_app.Payment.gpwebpay.merchant_id"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_MERCHANT_PRIVATE_KEY = app.config[
+        "registration_app.Payment.gpwebpay.private_key"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_MERCHANT_PRIVATE_KEY_PASSPHRASE = app.config[
+        "registration_app.Payment.gpwebpay.private_key_passphrase"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_PUBLIC_KEY = app.config[
+        "registration_app.Payment.gpwebpay.public_key"
+    ]
+    gpwebpay_config.configuration.GPWEBPAY_URL = app.config[
+        "registration_app.Payment.gpwebpay.url"
+    ]
