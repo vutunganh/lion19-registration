@@ -36,6 +36,7 @@ class ParticipantInfo:
     participant_type: ParticipantType
 
     remarks: str | None
+    photo_consent: bool
 
     @classmethod
     def from_form(
@@ -57,6 +58,7 @@ class ParticipantInfo:
             invoicing_vat_number=participant.invoicing_vat_number.data,
             participant_type=participant_type,
             remarks=participant.remarks.data,
+            photo_consent=participant.photo_consent.data == "YES",
         )
 
 
