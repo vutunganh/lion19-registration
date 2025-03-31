@@ -27,10 +27,3 @@ virtualenv = venv
 manage-script-name = true
 
 env = REGISTRATION_APP_CONFIG=etc/config.toml
-env = GPWEBPAY_CURRENCY=
-env = GPWEBPAY_MERCHANT_CALLBACK_URL=
-env = GPWEBPAY_MERCHANT_ID=
-env = GPWEBPAY_MERCHANT_PRIVATE_KEY=
-env = GPWEBPAY_MERCHANT_PRIVATE_KEY_PASSPHRASE=
-env = GPWEBPAY_PUBLIC_KEY=
-env = GPWEBPAY_URL=https://3dsecure.gpwebpay.com/pgw/order.do
