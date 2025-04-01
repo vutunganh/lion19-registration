@@ -8,6 +8,7 @@ from registration_app.forms.registration import RegistrationForm
 from registration_app.service import participant
 
 from bottle import jinja2_view, request, static_file
+from werkzeug.datastructures import MultiDict
 
 
 @app.route("/")  # pyright: ignore
@@ -20,7 +21,8 @@ def home():
 @app.post("/")  # pyright: ignore
 @jinja2_view("home.html.jinja")
 def register():
-    form = RegistrationForm(request.forms)  # pyright: ignore
+    form_data = MultiDict({k: request.forms.getunicode(k) for k in request.forms})  # pyright: ignore
+    form = RegistrationForm(form_data)  # pyright: ignore
     if not form.validate():
         return {"form": form}
     registration_result = participant.register_participant(form)
