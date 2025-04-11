@@ -10,3 +10,10 @@ repos:
   rev: v1.1.396
   hooks:
   - id: pyright
+- repo: https://github.com/sbdchd/squawk
+  rev: v1.6.0
+  hooks:
+    - id: squawk
+      files: src/registration_app/db/migrations/
+    - id: squawk
+      files: src/regular_export/
