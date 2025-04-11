@@ -9,8 +9,8 @@ complete_name=/tmp/lion19_complete_export_"$date".csv
 last_update="`psql -c 'COPY(SELECT MAX(ts) FROM participant_export_ts) TO STDOUT'`"
 psql -c "INSERT INTO participant_export_ts VALUES (CURRENT_TIMESTAMP)"
 
-psql -f query_for_daily.sql > "$daily_name"
-psql -f query_for_complete.sql > "$complete_name"
+psql -f queries/query_for_daily.sql > "$daily_name"
+psql -f queries/query_for_complete.sql > "$complete_name"
 
 for e in $EMAIL_ADDRESSES; do
   mutt -s "[LION19] Denni export (naposledy proveden '$last_update')" -a "$daily_name" -a "$complete_name" -- "$e" <<EOF
