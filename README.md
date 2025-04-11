@@ -44,6 +44,7 @@ These instruction are obtained by reverse-engineering the HALG 2023 version of t
     * At the moment of writing, it should be three directories: `etc`, `var`, `log`.
 1. Create a user service using `init/cauldron_reg.service`.
     * Put it in `~/.config/systemd/user/` directory and run `systemctl --user enable --now cauldron_reg`.
+    * If using systemd, make sure that the user has `enable-linger` enabled.
 1. Create a virtual environment in `~registration` named `venv`.
     * `python3 -m venv ~/registration/venv`.
 1. There should now be two config files in `~/registration/etc/`.
