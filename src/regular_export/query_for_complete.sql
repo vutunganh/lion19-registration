@@ -3,4 +3,4 @@ COPY (
     FROM participant
     ORDER BY email, date_registered DESC
 )
-TO STDOUT WITH DELIMITER ';';
+TO STDOUT WITH CSV HEADER DELIMITER ';';
