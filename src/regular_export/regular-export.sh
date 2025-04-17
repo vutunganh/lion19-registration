@@ -10,7 +10,15 @@ last_update="`psql -c 'COPY(SELECT MAX(ts) FROM participant_export_ts) TO STDOUT
 psql -c "INSERT INTO participant_export_ts VALUES (CURRENT_TIMESTAMP)"
 
 psql -f query_for_daily.sql > "$daily_name"
+sed -i -s 's|;t;|;ano;|g' "$daily_name"
+sed -i -s 's|;t$|;ano|g' "$daily_name"
+sed -i -s 's|;f;|;ne;|g' "$daily_name"
+sed -i -s 's|;f$|;ne|g' "$daily_name"
 psql -f query_for_complete.sql > "$complete_name"
+sed -i -s 's|;t;|;ano;|g' "$complete_name"
+sed -i -s 's|;t$|;ano|g' "$complete_name"
+sed -i -s 's|;f;|;ne;|g' "$complete_name"
+sed -i -s 's|;f$|;ne|g' "$complete_name"
 
 for e in $EMAIL_ADDRESSES; do
   mutt -s "[LION19] Denni export (naposledy proveden '$last_update')" -a "$daily_name" -a "$complete_name" -- "$e" <<EOF
