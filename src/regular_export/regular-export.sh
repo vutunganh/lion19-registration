@@ -17,7 +17,7 @@ for e in $EMAIL_ADDRESSES; do
 Ahoj, Petro a ostatni,
 
 v priloze posilam exportovane seznamy ucastniku ve formatu csv. Exporty jsou dva:
-  1. vyexportovany seznam ucastniku od vcerejska. Naposledy byl export proveden '$last_update'.
+  1. vyexportovany seznam ucastniku od minule. Naposledy byl export proveden '$last_update'.
     * Jmenuje se '`basename $daily_name`'.
   2. Celkovy seznam ucastniku.
     * Jmenuje se '`basename $complete_name`'.
