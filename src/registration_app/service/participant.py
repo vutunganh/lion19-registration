@@ -179,6 +179,7 @@ def validate_payment(callback_url: str) -> PaymentCallbackResult:
             "vat_number": participant_info.invoicing_vat_number or "",
             "price": str(determine_payment_amount(participant_info.participant_type)),
             "date": datetime.now().strftime("%Y-%m-%d"),
+            "reference_number": str(id),
         },
     )
 

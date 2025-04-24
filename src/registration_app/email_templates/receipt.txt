@@ -32,3 +32,4 @@ $full_name
 
 Registration fee - LION19 (June 15-19, 2025)     CZK  $price,-    (incl.  VAT TAX 21%)
 
+Payment reference number: $reference_number
