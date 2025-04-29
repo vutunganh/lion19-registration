@@ -20,6 +20,15 @@ sed -i -s 's|;t$|;ano|g' "$complete_name"
 sed -i -s 's|;f;|;ne;|g' "$complete_name"
 sed -i -s 's|;f$|;ne|g' "$complete_name"
 
+tmp_daily_name="$daily_name.tmp"
+mv "$daily_name" "$tmp_daily_name"
+(echo -ne '\xEF\xBB\xBF'; cat "$tmp_daily_name") > "$daily_name"
+rm "$tmp_daily_name"
+tmp_complete_name="$complete_name.tmp"
+mv "$complete_name" "$tmp_complete_name"
+(echo -ne '\xEF\xBB\xBF'; cat "$tmp_complete_name") > "$complete_name"
+rm "$tmp_complete_name"
+
 for e in $EMAIL_ADDRESSES; do
   mutt -s "[LION19] Denni export (naposledy proveden '$last_update')" -a "$daily_name" -a "$complete_name" -- "$e" <<EOF
 Ahoj, Petro a ostatni,
