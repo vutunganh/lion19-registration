@@ -22,11 +22,13 @@ sed -i -s 's|;f$|;ne|g' "$complete_name"
 
 tmp_daily_name="$daily_name.tmp"
 mv "$daily_name" "$tmp_daily_name"
-(echo -ne '\xEF\xBB\xBF'; cat "$tmp_daily_name") > "$daily_name"
+echo -ne '\xEF\xBB\xBF' >> "$daily_name"
+cat "$tmp_daily_name" >> "$daily_name"
 rm "$tmp_daily_name"
 tmp_complete_name="$complete_name.tmp"
 mv "$complete_name" "$tmp_complete_name"
-(echo -ne '\xEF\xBB\xBF'; cat "$tmp_complete_name") > "$complete_name"
+echo -ne '\xEF\xBB\xBF' >> "$complete_name"
+cat "$tmp_complete_name" >> "$complete_name"
 rm "$tmp_complete_name"
 
 for e in $EMAIL_ADDRESSES; do
