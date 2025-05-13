@@ -10,15 +10,28 @@ last_update="`psql -c 'COPY(SELECT MAX(ts) FROM participant_export_ts) TO STDOUT
 psql -c "INSERT INTO participant_export_ts VALUES (CURRENT_TIMESTAMP)"
 
 psql -f query_for_daily.sql > "$daily_name"
-sed -i -s 's|;t;|;ano;|g' "$daily_name"
-sed -i -s 's|;t$|;ano|g' "$daily_name"
-sed -i -s 's|;f;|;ne;|g' "$daily_name"
-sed -i -s 's|;f$|;ne|g' "$daily_name"
 psql -f query_for_complete.sql > "$complete_name"
-sed -i -s 's|;t;|;ano;|g' "$complete_name"
-sed -i -s 's|;t$|;ano|g' "$complete_name"
-sed -i -s 's|;f;|;ne;|g' "$complete_name"
-sed -i -s 's|;f$|;ne|g' "$complete_name"
+
+translate_bool_to_czech() {
+  file_name="$1"
+  sed -i -s 's|;t;|;ano;|g' "$file_name"
+  sed -i -s 's|;t$|;ano|g' "$file_name"
+  sed -i -s 's|;f;|;ne;|g' "$file_name"
+  sed -i -s 's|;f$|;ne|g' "$file_name"
+}
+translate_bool_to_czech "$daily_name"
+translate_bool_to_czech "$complete_name"
+
+prepend_bom_sequence() {
+  file_name="$1"
+  tmp_file_name="$file_name.tmp"
+  mv "$file_name" "$tmp_file_name"
+  printf '\357\273\277' > "$file_name"
+  cat "$tmp_file_name" >> "$file_name"
+  rm "$tmp_file_name"
+}
+prepend_bom_sequence "$daily_name"
+prepend_bom_sequence "$complete_name"
 
 for e in $EMAIL_ADDRESSES; do
   mutt -s "[LION19] Denni export (naposledy proveden '$last_update')" -a "$daily_name" -a "$complete_name" -- "$e" <<EOF
